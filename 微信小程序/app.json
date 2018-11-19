@@ -1,0 +1,47 @@
+{
+	"pages":[//用于描述当前小程序的所有页面路径
+		"pages/index/index",
+		"pages/logs/logs"
+	],
+	"window":{// 定义小程序所有页面的顶部背景颜色，文字颜色等
+		"navigationBarBackgroundColor":"#000000",  //十六进制  导航背景颜色
+		"navigationTextStyle":"white",// 仅支持black/white   导航栏标题颜色
+		"navigationBarTitleText":"标题",//导航栏标题文字内容
+		"navigationStyle":"default",// 导航栏样式 仅支持default 默认 custom自定义导航栏
+		"backgroundColor":"#ffffff",//窗口的背景色
+		"enablePullDownRefresh":false   //是否下拉刷新  默认false
+	},
+	"tabBar":{//底部tab栏的表现
+			"color":"#000", //tab上的文字默认颜色
+			"selectedColor":"#823",//tab上文字选中时的颜色
+			"backgroundColor":"#432532",//tab的背景色
+			"borderStyle":"black",//tabbar上边框的颜色 仅支持white and black
+			"list":[//tab的列表，最少2个最多五个
+				{
+					"pagePath":"pagePath",//页面路径，必须在pages中先定义
+					"text":"text", //tab上的按钮文字
+					"iconPath":"iconPath",//图片路径 icon大小限制40k  建议尺寸81*81px，不支持网络图片，当postion为top时，不显示icon
+					"selectedIconPath":"selectedIconPath" //选中时的图片路径 同上
+
+				},
+				{
+
+				}
+			],
+			"position":"bottom" // tabBar的位置，仅支持 bottom 和top
+	},
+	"networkTimeout":{//各类网络超时时间
+			"request":60000,//wx.request
+			"connectSocket":60000,//wx.connectSocket
+			"uploadFile":111111,//wx.uploadFile
+			"downloadFile":123 //wx.downloadFile 
+	},
+	"debug":false,//是否开启debug模式，默认关闭
+	"functionalPages":false,//是否启用插件功能页，默认关闭
+	"workers":"String", // 代码放置的目录
+	"plugins":{},// 使用到的插件
+	"preloadRule":{},//分包预下载规则
+	"resizable":false,// iPad小程序是否支持屏幕旋转 默认关闭
+	"navigateToMiniProgramAppIdList":"String or Array",//需要跳转的小程序列表
+	"usingComponents":{},//全局自定义组件配置
+}
