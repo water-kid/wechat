@@ -96,3 +96,43 @@ deltaX,deltaY}
 	bindload: 图片加载成功时触发
 	binderror： 图片加载失败时触发
 </cover-image>
+
+
+<icon>
+	type: icon的类型，有效值：success, success_no_circle , info ,warn,waiting,cancel,download,search,clear
+	size : icon的大小
+	color : icon的颜色
+</icon>
+
+<!-- selectable 是长按复制文本-->
+<text selcetable="false" space="false">
+		selectable : 文本是否可选
+		space : 显示连续空格  有效值 ： false, ensp(中文字符空格一半大小) emsp(中文字符空格大小)  nbsp(根据字体设置的空格大小)
+		decode : 是否解码
+
+		Tips：1. text 组件内只支持text嵌套
+</text>
+
+
+<!-- ？？？？？？ -->
+<rich-text>
+	nodes : 节点列表  （nodes属性推荐使用Array类型，由于组件会将String类型转换为Array，因而性能会有所下降）
+	现支持两种节点，通过type来区分，分别是元素节点和文本节点，在富文本区域里显示的HTML节点
+
+	元素节点
+</rich-text>
+
+
+<!-- 只要出现show-info就会显示 不管是否为false？？？？ -->
+<progress>
+	percent: 百分比 0-100
+	show-info: false  在进度条右侧显示百分比
+	border-radius : 圆角大小
+	font-size : 右侧百分比字体大小
+	stroke-width ： 进度条线的宽度
+	color ： 进度条颜色(请使用activeColor)	
+	activeColor: 已选择的进度条颜色
+	backgroundColor: 未选择的进度条颜色
+	active:  进度条从左往右的动画
+	active-mode: backwards:动画从头播  forwards：动画从上次结束点接着播
+</progress>

@@ -1,0 +1,55 @@
+
+<!-- plain 不能和 hover-class 共存？？？？ -->
+<!-- hover-class 无效  ： button已经自定义了背景色，样式选择权重有影响 -->
+<button>
+	size : 按钮的大小  default(默认大小) mini(小尺寸)
+	type ： 按钮的样式类型 primary(绿色) default(白色) warn(红色)
+	plain ：按钮是否镂空，背景色透明
+	disabled : 是否禁用
+	loading : 名称前是否带loading图标
+	form-type : 用于form组件 点击分别会触发form组件的submit/reset事件 submit(提交表单) reset
+	open-type : 微信开放能力   有效值： contact(打开客服会话，如果用户在会话中点击消息卡片后返回小程序) share(触发用户转发) getUserInfo(获取用户信息) getPhoneNumber(获取用户手机号)  launchApp(打开app可以通过app-parameter属性设定向app传的参数) openSetting(打开授权设置页) feedback(打开意见反馈页面)
+	hover-class: 指定按钮按下去的样式类，当hover-class="none"时，没有点击态效果
+	hover-stop-propagation : 是否阻止本节点的祖先节点出现点击态
+	hover-start-time : 按住多久后出现点击态 
+	hover-stay-time : 手指松开后点击态保留时间
+
+	<shengXiaoShiJi open-type="getUserInfo">
+		lang ：指定返回用户信息的语言   生效时机 open-type="getUserInfo"
+		bindgetuserinfo : 用户点击该按钮时，会返回获取到的用户信息，回调的detail数据与  wx.getUserInfo 返回的一致    生效时机 open-type="getUserInfo"
+	</shengXiaoShiJi>
+	<shengXiaoShiJi  open-type="contact">
+		session-from : 会话来源
+		send-message-title:	会话内消息卡片标题
+		send-message-path :  会话内消息卡片点击跳转小程序路径
+		send-message-img :  会话内消息卡片图片
+		send-message-card : 显示会话内消息卡片
+		bindcontact : 客服消息回调
+		binderror： 
+	</shengXiaoShiJi>
+
+	<shengXiaoShiJi open-type="getPhoneNumber">
+		bindgetphonenumber : 获取用户手机号回调 
+	</shengXiaoShiJi>
+	<shengXiaoShiJi open-type="launchApp">
+		app-parameter : 打开App时，向App传递的参数
+		binderror: 当使用开放能力时，发生错误的回调
+	</shengXiaoShiJi>
+		<shengXiaoShiJi open-type="openSetting">
+		bindopensetting : 再打开授权设置页后回调 
+	</shengXiaoShiJi>
+</button>
+
+
+<checkbox-group>
+	多项选择器，内部由多个checkbox组成
+	bindchange :  checkbox-group 中选中项发生改变时触发change事件，event.detail={value:[选中的checkbox的value的数组]}
+	<checkbox>
+		多选项目
+		value : checkbox标识，选中时触发checkbox-group的change事件，并携带checkbox的value
+		disabled : 是否禁用
+		checked : 当前是否选中，可用来设置默认选中
+		color : checkbox 的颜色，同css的color
+	</checkbox>
+
+</checkbox-group>
