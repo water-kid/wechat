@@ -51,5 +51,177 @@
 		checked : 当前是否选中，可用来设置默认选中
 		color : checkbox 的颜色，同css的color
 	</checkbox>
-
 </checkbox-group>
+
+<input type="" name="">
+	输入框，该组件是原生组件，使用时请注意相关限制
+	value: 输入框的初始内容
+	type: input的类型  有效值： text/number/idcard(身份证)/digit(带小数点的数字键盘)
+	password : 是否是密码类型
+	placeholder : 输入框为空时的占位符
+	placeholder-style: 指定placeholder的样式
+	placeholder-class : 指定placeholder的样式类
+	disabled ： 是否禁用
+	maxlength : 最大输入长度，设置为-1的时候不限制最大长度
+	cursor-spacing: 指定光标与键盘的距离，，取input距离底部的距离和cursor-spacing指定的距离的最小值作为光标与键盘的距离
+	auto-focus: 自动聚焦(即将废弃，请直接使用focus)
+	focus : 获取焦点
+	confirm-type : 设置键盘右下角按钮的文字，仅在type="text"时生效
+	-----有效值 send(右下角按钮为“发送”) search(搜索) next(下一个) go(前往) done(完成)
+	confirm-hold : 点击键盘右下角按钮时是否保持键盘不收起
+	cursor ： 指定focus时的光标位置
+	selection-start : 光标起始位置，自动聚集时有效，需要与selection-end搭配使用
+	selection-end : 光标结束位置
+	adjust-position: 键盘弹起时，是否自动上推页面
+	bindinput: 键盘输入时触发  event.detail={value,cursor,keyCode}  处理函数可以直接return一个字符串，将替换输入框的内容
+	bindfocus: 输入框聚焦时触发， event.detail={value,height} height为键盘高度
+	bindblur : 输入框失去焦点时触发 ，event.detail={value}
+	bindconfirm: 点击完成按钮时触发  event.detail={value}
+
+
+	注意：
+		confirm-type的最终表现与手机输入法本身的实现有关，部分安卓系统输入法和第三方输入法可能不支持或不完全支持
+		input 组件是一个原生组件，字体是系统字体，所以无法设置font-family
+		在input聚焦期间，避免使用css动画
+		对于将input封装在自定义组件中，而form在自定义组件外的情况，form将不能获得这个input的值
+		此时需要使用自定义组件的内置 behaviors
+<input type="" name="">
+
+
+<picker>
+	从底部弹起的滚动选择器，现支持五中选择器，通过mode来区分，分别是普通选择器，多列选择器，时间选择器，省市区选择器，默认是普通选择器
+	<picker mode="selector">
+		range : mode为selector或multiSelector时，range有效
+		range-key : 当range是一个Object Array时，通过range-key来制定object中key的值作为选择器显示内容
+		value： value的值表示选择了range中的第几个(下标从0开始)
+		bindchange: value改变时触发change事件， event.detail={value}
+		disabled: 是否禁用
+		bindcancel: 取消选择或点遮罩层收起picker时触发
+	</picker>
+	<picker mode="multiSelector">
+		range: [["a","b"],["c","d"]]
+		range-key
+		value
+		bindchange
+		bindcolumnchange: 某一列的值改变时触发columnchange事件，event.detail={column,value} column的值表示改变了第几列(下标从0开始),value的值表示变更值的下标
+		bindcancel
+		disabled
+	</picker>
+	<picker mode="time">
+		value: 表示选中的时间，格式为“hh:mm”
+		start: 表示有效时间范围的开始，字符串格式为“hh:mm”
+		end : 表示有效时间范围的结束
+		bindchange:value改变时触发change事件，event.detail={value}
+		bindcancel
+		disabled
+	</picker>
+	<picker mode="date">
+		value : 表示选中的日期，格式为“YYYY-MM-DD”
+		start:
+		end:
+		fields:有效值 year,month,day 表示选择器的粒度
+		bindchange: 
+		bindcancel:
+		disabled:
+	</picker>
+	<picker mode="region">
+		value: 表示选中的省市区，默认选中每一列的第一个值
+		custom-item：可为每一列的顶部添加一个自定义项
+		bindchange :  event.detail={value,code,postcode} 其中字段code是统计用区划代码，postcode是邮政编码
+		bindcancel : 
+		disabled:
+	</picker>
+</picker>
+
+<picker-view>
+	value: 数组中的数字依次表示picker-view内的picker-view-column选择的第几项(下标从0开始),数字大于picker-view-column 可选项长度时，选择最后一项
+	indicator-style : 设置选择器中间选中框的样式
+	indicator-class : 设置选择器中间选中框的类名
+	mask-style: 设置蒙层的样式
+	mask-class : 设置蒙层的类名
+	bindchange: 当滚动选择 value改变时触发 event.details={value},value为数组，表示picker-view内picker-view-column当前选择的是第几项(下标从0开始)
+	bindpickstart:当滚动选择开始时触发事件
+	bindpickend : 当滚动选择结束时候触发事件
+
+	<picker-view-column>
+		
+	</picker-view-column>
+	注意： picker-view其中只可防止 picker-view-column 组件 ，其他节点不会显示。
+	picker-view-column 其孩子节点的高度会自动设置成与picker-view的选中框的高度一致
+</picker-view>
+
+<radio-group>
+		单项选择器，内部由多个 radio 组成
+		bindchange : radio-group 中的选中项发生变化时触发change事件，event.detail={value:选中项radio的value} 
+		<radio>
+			value ：当radio选中时 ，radio-group的change事件会携带radio 的 value
+			checked : 当前是否选中
+			disabled: 是否禁用
+			color : radio的颜色，同css的color
+		</radio>
+</radio-group>
+
+
+<!-- ##滑动选择器 -->
+<slider>
+	min: 最小值
+	max : 最大值
+	step : 步长，取值必须大于0，并且可被(max-min)整除
+	disabled: 是否禁用
+	value : 当前取值
+	color : 背景条的颜色(请使用backgroundColor)
+	selected-color: 已选择的颜色(请使用activeColor)
+	activeColor: 已选择的颜色
+	backgroundColor:背景条颜色
+	block-size : 28  滑块的大小，取值范围为12-28
+	block-color ：滑块的颜色
+	show-value: 是否显示当前value
+	bindchange : 完成一次拖动后触发的事件 event.detail={value}
+	bindchanging: 拖动过程中触发的事件 event.detail={value}
+</slider>
+
+<!-- ##开关选择器 -->
+<switch>
+	checked:是否选中
+	disabled: 是否禁用
+	type: 样式，有效值：switch,checkbox
+	bindchange: checked改变时触发change事件，event.detail={value:checked}
+	color ： switch的颜色，同css的color
+
+</switch>
+
+<!-- ##多行输入框 -->
+<textarea>
+	value: 输入框的内容
+	placeholder: 输入框为空时的占位符
+	placeholder-style : 指定placeholder的样式
+	placeholder-class : 指定placeholder的样式类
+	disabled : 是否禁用
+	maxlength : 最大输入长度，设置为-1的时候不限制最大长度
+	auto-focus: 自动聚焦，拉起键盘
+	focus : 获取焦点
+	auto-height: 是否自动增高，设置auto-height时，style.height不生效
+	fixed :如果textarea是在一个position:fixed区域，需要显示指定属性fixed为true
+	cursor-spacing:指定光标与键盘的距离
+	cursor ：指定focus时的光标位置
+	show-confirm-bar : 是否显示键盘上方带有“完成” 按钮那一栏
+	selection-start : 光标起始位置，自动聚集时有效，需要与selection-end搭配使用
+	selection-end : 光标结束位置
+	adjust-position : 键盘弹起时，是否自动上推页面
+	bindfocus : 输入框聚焦时触发，event.detail={value,height}  .height为键盘高度
+	bindblur ： 输入框失去焦点时触发
+	bindlinechange : 输入框行数变化时调用 event.detail={height:0,heghtRpx:0,lineCount:0}
+	bindinput : 当键盘输入时，触发input事件，event.detail={value,cursor},bindinput处理函数的返回值并不会反映到textarea上
+	bindconfirm : 点击完成时，触发confirm事件
+
+</textarea>
+
+<form>
+	将组件内的用户输入的switch,input,checkbox,slider,radio,picker
+	当点击form表单中 formType为submit的 <button>组件时，会将表单组件中的value值进行提交，需要在表单组件中加上name来作为key
+
+	report-submit: 是否返回formId 
+	bindsubmit : 携带form中的数据触发submit事件， event.detail={value,formID}
+	bindreset : 表单重置会触发reset事件
+
+</form>
