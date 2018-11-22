@@ -1,0 +1,23 @@
+<!-- 用于展示微信开放的数据 -->
+<open-data>
+
+	type ：开放数据类型
+	open-gid : 当type=“groupName” 时生效，群id
+	lang ： 
+
+	type的有效值：
+		groupName : 拉取群名称
+		userNickName : 用户昵称
+		userAvatarUrl : 用户头像
+		userGender ：用户性别
+		userCity : 用户所在城市
+		userProvince : 用户所在省份
+		userCountry : 用户所在国家
+		userLanguage : 用户的语言
+</open-data>
+
+<!-- 用来承载网页的容器，会自动铺满整个小程序页面。个人类型与海外类型的小程序暂不支持使用 -->
+<web-view>
+	src ： webview 指向网页的链接，可打开关联的公众号的文章，其他网页需登录小程序管理后台配置业务域名
+	<!-- bindmessage : 网页向小程序 postMessage时，会在待定时机 -->
+</web-view>

@@ -1,3 +1,34 @@
+
+<!-- open-type  ?????????? -->
 <navigator>
-	
+	target ：在哪个目标上发生跳转，默认当前小程序
+	url : 当前小程序内的跳转链接
+	open-type : 跳转方式 有效值：navigate(对应 wx.navigateTo 或 wx.navigateToMinProgram)  redirect(对应wx.redirectTo)  switchTab(对应 wx.switchTab) reLaunch(对应wx.reLaunch) navigateBack(对应wx.navigateBack)  exit(退出小程序，当target=miniProgram时生效)
+	hover-class : 指定点击时的样式类
+	hover-stop-propagation: 指定是否组织本节点的祖先节点出现点击态
+	hover-start-time : 按住后多久出现点击态
+	hover-stay-time : 手指松开多久后点击态保留时间
+
+	<navigator open-type="navigateBack">
+		delta : 表示回退的层数  ，当open-type为navigateBack
+	</navigator>
+	<navigator target="miniProgram">
+		app-id : 要打开的小程序Id
+		path : 打开的页面路径，如果为空则打开首页
+		extra-data : 需要传递给目标小程序的数据，目标小程序可在 App.onLaunch(),App.onShow()中获取到这份数据
+		version ： 要打开的小程序版本，有效值 develop(开发版) trial(体验版) release(正式版)
+		bindsuccess : 跳转小程序成功
+		bindfail ： 跳转小程序失败
+		bindcomplete : 跳转小程序完成
+	</navigator>
 </navigator>
+
+<!-- 仅在插件的自定义组件中有效 ？？？？、 -->
+<functional-page-navigator>
+	仅在插件的自定义组件中有效，用于跳转到插件功能页
+	version : 跳转到的小程序版本
+	name : 要跳转到的功能页  有效值 loginAndGetUserInfo(用户信息功能页) requestPayment(支付功能页)
+	args ：功能页参数
+	bindsuccess : 功能页返回，且操作成功时触发
+	bindfail : 失败触发
+</functional-page-navigator>

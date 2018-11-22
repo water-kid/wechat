@@ -1,0 +1,88 @@
+<audio>
+	id : audio组件的唯一标识符
+	src : 要播放音频的资源地址
+	loop : 是否循环播放
+	controls : 是否显示默认控件
+	poster : 默认控件上的音频封面的图片资源地址，如果controls属性值为false则设置poster无效
+	name : 默认控件上的音频名字
+	author ：默认控件上的作者名字
+	binderror : 当发生错误时  返回值 1(获取资源被用户禁止) 2(网络错误) 3(解码错误) 4(不合适资源)
+	bindplay ：当开始 / 继续 播放时触发
+	bindpause : 当暂停播放时触发
+	bindtimeupdate : 当播放进度改变时触发  detail={currentTime,duration}
+	bindended : 当播放到末尾时触发
+</audio>
+
+
+<image>
+	src : 图片资源地址
+	mode ： 图片裁剪，缩放的模式
+	lazy-load ：图片懒加载。只针对page与scroll-view下的image有效
+	binderror : 当错误发生时，发布到AppService的事件名
+	bindload : 当图片载入完毕时  event.detail={height:图片高度，width：图片宽度}
+	注意：
+		1，image组件默认宽度300px 高度225px 
+		2，image组件中二维码/小程序码图片不支持长按识别，仅在wx.previewImage中支持长按识别
+</image>
+
+
+
+
+<video>
+	src : 要播放视频的资源地址
+	initial-time: 指定视频初始播放位置
+	duration: 指定视频时长
+	contorls : 是否显示默认播放控件
+	danmu-list : 弹幕列表
+	danmu-btn : 是否显示弹幕按钮，只在初始化时有效，不能动态变更
+	enable-danmu ： 是否展示弹幕，只在初始化时有效，不能动态变更
+	autoplay : 是否自动播放
+	loop : 是否循环
+	muted ：是否静音播放
+	page-getsture:在非全屏模式下，是否开启亮度与音量调节手势
+	direction：设置全屏时视频的方向，不指定则根据宽高自动判断
+	show-progress : 若不设置，宽度大于240时才会显示
+	show-fullscreen-btn : 是否显示全屏按钮
+	show-play-btn :是否显示视频底部控制栏的播放按钮
+	show-center-play-btn : 是否显示视频中间的播放按钮
+	enable-progress-gesture: 是否开启控制进度的手势
+	objectFit:当视频大小与容器大小不一致时，视频的表现形式 contain(包含) fill(填充) cover(覆盖)
+	poster ： 视频封面的图片网络资源地址或云文件ID，如果controls属性值为false，则设置poster无效
+	bindplay: 开始 / 继续播放
+	bindpause : 暂停
+	bindended : 播放到末尾时
+	bindtimeupdate : 播放进度变化时
+	bindfullscreenchange : 视频进入和退出全屏时
+	bindwaiting : 视频出现缓冲时
+	binderror : 视频播放错误时
+	bindprogress :  加载进度变化时触发，只支持一段加载 event.detail={buffered} 百分比
+
+	注意：
+		danmu-list 中 Array格式
+		[{
+			text:"弹幕内容",
+			color:"弹幕颜色",
+			time:"出现的时间"
+	},{},...]
+</video>
+
+<camera>
+	系统相机，该组件是原生组件
+	mode : 有效值为 normal ，scanCode
+	device-position : 前置或后置 front ,back
+	flash : 闪光灯 auto，on,off
+	bindstop: 摄像头在非正常终止时触发，如退出后台等情况
+	binderror :  用户不允许使用摄像头时触发
+	<camera mode="scanCode">
+		bindscancode : 在扫码识别成功时触发 
+	</camera>
+	注意：
+		1，camera是原生组件
+		2，同一页面只能插入一个camera组件
+</camera>
+
+
+<live-player>
+	实时音频视频播放，改组件是原生组件
+	暂只针对国内主体如下类目的小程序开放，需要先通过类目审核，再在小程序管理后台“设置”-“接口设置” 中自助开通该组件权限
+</live-player>

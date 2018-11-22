@@ -1,0 +1,115 @@
+<map>
+	地图，该组件是原生组件。
+	个性化地图能力可在小程序后台“设置-开发者工具-腾讯位置服务”申请开通，设置subkey后，小程序内的地图组件均会使用该底图效果，底图场景的切换会在后续版本提供。
+
+	longitude : 中心经度
+	latitude ： 中心纬度
+	scale : 缩放级别，取值范围5-18
+		markers ： 标记点
+
+	<div>
+		markers 属性
+		id : 标记点id
+		latitude: 纬度
+		longitude ： 经度
+		title ：标注点名
+		zIndex: 显示层级
+		iconPath : 显示的图标
+		rotate :旋转角度
+		alpha : 标注的透明度
+		width ：标注图标宽度
+		height : 标注图标高度
+		callout : 自定义标记点上方的气泡窗口  Object
+		<span>
+			callout属性
+			content : 文本
+			color : 文本颜色
+			fontSize :文本字体
+			borderRadius:边框圆角
+			borderWidth : 边框宽度
+			borderColor : 边框颜色
+			bgColor : 背景色
+			padding : 文本边缘留白
+			display : 'BYCLICK'(点击显示) 'ALWAYS':常显
+			textAlign: 文本对齐方式。有效值left ，right ，center
+		</span>
+		label : 为标记点旁边增加标签  Object
+		<span>
+			label的属性
+			content:
+			color:
+			fontSize:
+			anchorX : label的坐标，原点是marker对应的经纬度
+			anchorY ：
+			borderWidth:边框宽度
+			borderColor：
+			borderRadius:
+			bgColor:
+			padding:
+			textAlign:
+		</span>
+		anchor ：经纬度在标注图标的锚点，默认底边中点
+	</div>
+	polyline ： 路线
+	<div>
+		polyline 属性   指定一系列坐标点，从数组第一项连线至最后一项
+		points: 经纬度数组  [{latitude:0,longitude:0}]
+		color:
+		width:
+		dottedLine:
+		arrowLine:
+		arrowIconPath:
+		borderColor:
+		borderWidth:
+	</div>
+	polygons : 多边形
+	<div>
+		polygons 属性 指定一系列坐标点，根据points坐标数据生成闭合多边形
+		points:
+		strokeWidth:
+		strokeColor:
+		fillColor:
+		zIndex:
+	</div>
+	circle : 圆 
+	<div>
+		circle 属性  在地图上显示圆
+		latitude
+		longitude
+		color
+		fillColor
+		radius
+		strokeWidth
+	</div>
+	controls : 控件(即将废弃，建议使用cover-view代替)
+	<div>
+		contorls 属性
+		id ： 控件id
+		position ： 控件在地图的位置  Object
+		<span>
+			position 属性
+			left：距离地图左边界多远
+			top : 距离地图上边界多远
+			width ：控件宽度
+			height : 
+		</span>
+		iconPath:显示的图标
+		clickable:
+	</div>
+	include-points : 缩放视野以包含所有给定的坐标点
+	show-location : 显示带有方向的当前定位点
+	subkey : 个性化地图使用的key，仅初始化地图时有效
+	enable-3D : 展示3D楼块
+	show-compass : 显示指南针
+	enable-overlooking : 开启俯视
+	enable-zoom : 是否支持缩放
+	enable-scroll : 是否支持拖动
+	enable-rotate : 是否支持旋转
+	bindmarkertap : 点击标记点时触发，会返回marker的id
+	bindcallouttap : 点击标记点对应的气泡时触发，会返回marker的id
+	bindcontroltap : 点击控件时触发，会返回control的id
+	bindregionchange : 视野发生变化时触发
+	bindtap : 点击地图时触发
+	bindupdated : 在地图渲染更新完成时触发
+	bindpoitap : 点击地图poi点时触发
+</map> 

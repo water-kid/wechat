@@ -1,0 +1,50 @@
+在模板中引用到的自定义组件及其对应的节点名需要在json文件中显示定义，否则会被当做一个无意义的节点，除此以外，节点名也可以被声明为抽象节点
+
+
+<!-- 
+组件样式：
+	组件对应的wxss文件的样式，只对组件wxml内的节点生效
+注意：
+	1，组件和引用组件的页面不能使用id选择器，属性选择器和标签名选择器
+	2，不能使用后代选择器
+	3，子元素选择器，只能用于view组件与其子节点之间
+	4，继承样式 font ，color
+	5，除继承样式外，app.wxss中的样式，组件所在页面的样式对自定义组件无效
+	除此以外，组件可以指定它所在节点的默认样式， 使用 :host 选择器
+
+全局样式类：
+	如果希望组件外样式类能够完全影响组件内部，可以将组件构造器中的 options.addGlobalClass字段置为true
+ -->
+
+
+ <!-- 
+Component 构造器
+	properties : 组件的对外属性，是属性名到属性设置的映射表，属性设置中可包含三个字段，type表示属性类型，value表示属性初始值，observer表示属性值被更改时的响应函数
+	data : 组件的内部数据，和properties 一同用于组件的模板渲染
+	methods : 组件的方法
+	behaviors : 类似于mixins和straits的组件间的代码复用机制
+	created : 组件生命周期函数，在组件实例刚刚被创建时执行，注意此时不能调用setData
+	attached ： 在组件实例进入页面节点树时执行
+	ready : 在组件布局完成后执行
+	moved : 在组件实例被移动到节点树另一个位置时执行
+	detached :  在组件实例被从页面节点树移除时执行
+	relations : 组件间关系定义
+	externalClasses : 组件接受的外部样式类
+	options ： 一些选项
+	lifetimes : 组件生命周期声明对象
+	pageLifetimes ： 组件所在页面的声明周期声明对象
+	definitionFilter ：定义段过滤器，用于自定义组件扩展
+  -->
+
+
+  <!-- 
+	组件的属性：
+	is  : 组件的文件路径
+	id : 节点id
+	dataset : 节点dataset
+	data ： 组件数据
+	properties ：组件（与data一致）
+
+	方法名：
+	
+   -->
